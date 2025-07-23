@@ -1,0 +1,94 @@
+1.What is a Thread in Java?
+✨ Practice: Explain in your own words, and implement a class extending Thread and another implementing Runnable.
+
+2. What is the difference between Thread and Runnable?
+💡 Coding Task:
+
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Thread running using Thread class");
+    }
+}
+
+class MyRunnable implements Runnable {
+    public void run() {
+        System.out.println("Thread running using Runnable interface");
+    }
+}
+3. What is the lifecycle of a thread?
+🧠 States: New, Runnable, Running, Blocked/Waiting, Terminated.
+
+💡 Practice: Write logs at different thread states using Thread.sleep() and join().
+
+4. What is the difference between start() and run()?
+💥 start() creates a new thread and invokes run() in it. Calling run() directly runs it in the current thread.
+
+5. What is sleep() and join() in threads?
+sols:
+Use Thread.sleep(2000) in one thread.(pause the thread for that particular seconds).
+
+Use join() to ensure one thread finishes before another starts.
+
+🚀 Advanced Interview-Level Thread Questions
+
+
+6. What is synchronization? Why do we need it?
+🔐 To avoid data inconsistency during concurrent access.
+
+💡 Practice: Write a Counter class where multiple threads try to increment a variable.
+
+7. How do you synchronize a block or method?
+Code Example:
+
+synchronized void increment() {
+    count++;
+}
+8. What is a race condition?
+Condition where two threads operate on the same data and produce unpredictable results.
+
+9. What is a deadlock? How can we prevent it?
+🤯 When two threads are waiting for each other to release resources.
+
+10. What are daemon threads?
+Threads that run in background (like garbage collector).
+
+💡 Practice: thread.setDaemon(true);
+
+11. What is ExecutorService?
+For thread pooling, instead of manually creating threads.
+
+💻 Practice Tasks
+Print Even/Odd using 2 threads alternately.
+
+Create a thread that counts down from 10 to 1, sleeps for 1 sec each.
+
+Create a bank account simulation with synchronized deposit/withdraw.
+
+Run multiple threads to simulate downloading multiple files.
+
+Demonstrate deadlock with two threads and two synchronized blocks.
+
+🔄 Real-Time Example (for Interview Demo)
+Multithreaded Restaurant Simulation:
+
+class Chef extends Thread {
+    public void run() {
+        System.out.println("Chef is preparing food...");
+    }
+}
+
+class Waiter extends Thread {
+    public void run() {
+        System.out.println("Waiter is serving food...");
+    }
+}
+
+public class Restaurant {
+    public static void main(String[] args) {
+        Chef chef = new Chef();
+        Waiter waiter = new Waiter();
+
+        chef.start();
+        waiter.start();
+    }
+}
